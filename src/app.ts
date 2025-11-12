@@ -1,11 +1,12 @@
 //import express
 const express = require("express");
+import 'dotenv/config'
 
 //tao express application
 const app = express();
 
 //khai bao port
-const PORT = 8080
+const PORT = process.env.PORT || 8080
 
 //khai bao routes
 //req: request
@@ -21,4 +22,5 @@ app.get("/leanh", (req, res) => {
 //chay ung dung voi cong 8080
 app.listen(PORT, () => {
     console.log(`running on port...: ${PORT}`);
+    console.log("port env: ", process.env.PORT)
 })
