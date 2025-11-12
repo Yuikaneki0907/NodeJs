@@ -1,0 +1,19 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "course nodejs for hoidanit",
+  "main": "hello.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yuikaneki0907/NodeJs.git"
+  },
+  "author": "leanh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yuikaneki0907/NodeJs/issues"
+  },
+  "homepage": "https://github.com/Yuikaneki0907/NodeJs#readme"
+}
