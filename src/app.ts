@@ -3,7 +3,11 @@ import 'dotenv/config'
 
 const app = express();
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8080;
+
+//config view engine
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
 
 app.get("/", (req, res) => {
     res.send("hello update nodemon") 
@@ -14,9 +18,7 @@ app.get("/leanh", (req, res) => {
 })
 
 app.get("/abc", (req, res) => {
-    res.send(
-        `<h1 style="color: red">ABC</h1>`
-    ) 
+    res.render("home.ejs")
 })
 
 app.listen(PORT, () => {
