@@ -1,20 +1,15 @@
-import express, {Express} from "express";
+import express, { Express } from "express";
+import { getCreateUserPage, getHomePage, postCreateUserPage } from "../controllers/user.controller";
 
 const router = express.Router();
 
 const webRoutes = (app: Express) => {
-  router.get("/", (req, res) => {
-    res.send("hello update nodemon");
-  });
+  router.get("/", getHomePage);
 
-  router.get("/leanh", (req, res) => {
-    res.send("leanhhhh");
-  });
+  router.get("/create-user", getCreateUserPage);
 
-  router.get("/abc", (req, res) => {
-    res.render("home.ejs");
-  });
-  
+  router.post("/create-user", postCreateUserPage);
+
   app.use("/", router);
 };
 
