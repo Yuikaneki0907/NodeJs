@@ -22,8 +22,6 @@ app.use(express.static('public'));
 //config routes
 webRoutes(app);
 
-getConnection();
-
 app.listen(PORT, () => {
     console.log(`running on port...: ${PORT}`);
     console.log("port env: ", process.env.PORT);
