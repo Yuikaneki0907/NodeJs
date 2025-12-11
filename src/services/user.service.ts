@@ -1,3 +1,4 @@
+import { prisma } from "config/client";
 import getConnection from "config/database";
 
 const handleCreateUser = async (
@@ -5,19 +6,14 @@ const handleCreateUser = async (
   email: string,
   address: string
 ) => {
-  //insert into db
-  const connection = await getConnection();
-  try {
-    const sql =
-      "INSERT INTO `users`(`name`, `email`, `address`) VALUES (?, ?, ?)";
-    const values = [name, email, address];
-
-    const [result, fields] = await connection.execute(sql, values);
-
-    return result;
-  } catch (err) {
-    console.log(err);
-  }
+  const newUser = await prisma.user.create({
+    data: {
+      name: name,
+      email: email,
+      address: address,
+    },
+  });
+  return newUser;
 };
 
 const getAllUsers = async () => {
@@ -25,7 +21,7 @@ const getAllUsers = async () => {
 
   // A simple SELECT query
   try {
-    const [results, fields] = await connection.query("SELECT * FROM `users`");
+    const [results, fields] = await connection.query("SELECT * FROM `user`");
 
     return results;
   } catch (err) {
@@ -35,11 +31,11 @@ const getAllUsers = async () => {
   return [];
 };
 
-const handleDeleteUser = async ( id: string) => {
+const handleDeleteUser = async (id: string) => {
   try {
     const connection = await getConnection();
-    const sql = "DELETE FROM `users` WHERE `id` = ? LIMIT 1";
-    const values = [ id];
+    const sql = "DELETE FROM `user` WHERE `id` = ? LIMIT 1";
+    const values = [id];
 
     const [result, fields] = await connection.execute(sql, values);
 
@@ -49,25 +45,32 @@ const handleDeleteUser = async ( id: string) => {
   }
 };
 
-const getUserById = async ( id: string) => {
+const getUserById = async (id: string) => {
   try {
     const connection = await getConnection();
-    const sql = "SELECT * FROM `users` WHERE `id` = ?";
+    const sql = "SELECT * FROM `user` WHERE `id` = ?";
     const values = [id];
 
     const [result, fields] = await connection.execute(sql, values);
 
-    return result[0];
+    //
+    return result;
   } catch (err) {
     console.log(err);
   }
-}
+};
 
-const postUserById = async (name: string, email: string, address: string,id: string) => {
+const postUserById = async (
+  name: string,
+  email: string,
+  address: string,
+  id: string
+) => {
   try {
     const connection = await getConnection();
-    const sql = "UPDATE `users` SET `name` = ? , `email` = ?, `address` = ? WHERE `id` = ? ";
-    const values = [name, email, address,id];
+    const sql =
+      "UPDATE `user` SET `name` = ? , `email` = ?, `address` = ? WHERE `id` = ? ";
+    const values = [name, email, address, id];
 
     const [result, fields] = await connection.execute(sql, values);
 
@@ -75,6 +78,12 @@ const postUserById = async (name: string, email: string, address: string,id: str
   } catch (err) {
     console.log(err);
   }
-}
+};
 
-export { handleCreateUser, getAllUsers, handleDeleteUser, getUserById, postUserById };
+export {
+  handleCreateUser,
+  getAllUsers,
+  handleDeleteUser,
+  getUserById,
+  postUserById,
+};
