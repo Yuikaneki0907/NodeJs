@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "course nodejs for hoidanit",
   "main": "dist/app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon",
     "dev": "nodemon",
-    "start:debug": "nodemon --inspect=9229 -e ts,tsx --exec node -r ts-node/register ./src/app.ts"
+    "start:debug": "nodemon --inspect=9229 -e ts,tsx --exec node -r ts-node/register -r tsconfig-paths/register ./src/app.ts"
   },
   "nodemonConfig": {
     "watch": [
@@ -17,7 +18,7 @@
     "ignore": [
       "node_modules"
     ],
-    "exec": "ts-node ./src/app.ts"
+    "exec": "ts-node -r tsconfig-paths/register ./src/app.ts"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,8 @@
   },
   "homepage": "https://github.com/Yuikaneki0907/NodeJs#readme",
   "dependencies": {
+    "@prisma/client": "6.3.0",
+    "prisma": "6.3.0",
     "dotenv": "16.4.7",
     "ejs": "3.1.10",
     "express": "5.0.1",
@@ -41,6 +44,7 @@
     "@types/node": "22.10.7",
     "nodemon": "3.1.9",
     "ts-node": "10.9.2",
+    "tsconfig-paths": "4.2.0",
     "typescript": "5.7.3"
   }
 }

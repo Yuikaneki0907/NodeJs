@@ -1,8 +1,8 @@
 import express, {Express} from "express";
 import 'dotenv/config';
-import webRoutes from './routes/web';
+import webRoutes from 'routes/web';
 import exp from "constants";
-import getConnection from "./config/database";
+import getConnection from "config/database";
 
 const app = express() as Express;
 
