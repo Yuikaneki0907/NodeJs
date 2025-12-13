@@ -30,12 +30,13 @@
   },
   "homepage": "https://github.com/Yuikaneki0907/NodeJs#readme",
   "dependencies": {
-    "@prisma/client": "6.3.0",
-    "prisma": "6.3.0",
+    "@prisma/adapter-mariadb": "^7.1.0",
+    "@prisma/client": "7.1.0",
     "dotenv": "16.4.7",
     "ejs": "3.1.10",
     "express": "5.0.1",
-    "mysql2": "3.12.0"
+    "mysql2": "3.12.0",
+    "prisma": "7.1.0"
   },
   "devDependencies": {
     "@types/ejs": "3.1.5",

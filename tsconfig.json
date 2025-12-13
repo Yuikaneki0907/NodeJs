@@ -3,7 +3,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "target": "es6",
+    "target": "es2020",
     "strict": true,
     "sourceMap": true,
     "skipLibCheck": true,
@@ -18,5 +18,6 @@
       "views/*": ["./src/views/*"],
       "models/*": ["./src/models/*"]
     }
-  }
+  },
+  "exclude": ["node_modules", "dist", "prisma.config.ts"]
 }
