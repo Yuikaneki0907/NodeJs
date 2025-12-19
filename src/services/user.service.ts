@@ -23,6 +23,12 @@ const getAllUsers = async () => {
   return users;
 };
 
+const getAllRoles = async () => {
+  const roles = await prisma.role.findMany();
+
+  return roles;
+};
+
 const handleDeleteUser = async (id: string) => {
   const deleteUser = await prisma.user.delete({
   where: {
@@ -65,4 +71,5 @@ export {
   handleDeleteUser,
   getUserById,
   postUserById,
+  getAllRoles,
 };

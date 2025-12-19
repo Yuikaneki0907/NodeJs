@@ -9,7 +9,7 @@
     />
     <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
     <meta name="author" content="Hỏi Dân IT" />
-    <title>Create User - Hỏi Dân IT</title>
+    <title>Manage User - Hỏi Dân IT</title>
 
     <link href="/admin/css/styles.css" rel="stylesheet" />
     <script
@@ -32,35 +32,67 @@
               <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
               <li class="breadcrumb-item active">Users</li>
             </ol>
-          <div style="width: 600px; margin: auto">
-            <h3>Create a user</h3>
-            <form action="/admin/create-user" method="post">
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  name="email"
-                />
+            <div>
+              <div style="width: 600px; margin: auto">
+                <h3>Create a user</h3>
+                <form action="/create-user" method="post">
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Full name: </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      name="name"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="adress" class="form-label">Address:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="adress"
+                      name="address"
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Username:</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      placeholder="abc@gmail.com"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Avatar</label>
+                    <input class="form-control" type="file" id="formFile" />
+                  </div>
+                  <div class="row">
+                    <div class="mb-3 col-md-8">
+                      <label for="inputCity" class="form-label">City</label>
+                      <input type="text" class="form-control" id="inputCity" />
+                    </div>
+                    <div class="mb-3 col-md-4">
+                      <label for="inputState" class="form-label">State</label>
+                      <select id="inputState" class="form-select">
+                        <% roles.forEach((role,index) => { %>
+                        <option value="<%-roles.id %>">
+                          <%- role.name %>
+                        </option>
+                        <%})%>
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <button type="submit" class="btn btn-warning">
+                      Submit
+                    </button>
+                  </div>
+                </form>
               </div>
-              <div class="mb-3">
-                <label for="adress" class="form-label">Address</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="adress"
-                  name="address"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" />
-              </div>
-              <div>
-                <button type="submit" class="btn btn-warning">Submit</button>
-              </div>
-            </form>
+            </div>
           </div>
         </main>
         <%- include('../layout/footer'); %>
